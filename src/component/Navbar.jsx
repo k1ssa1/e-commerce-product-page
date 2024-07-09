@@ -3,6 +3,7 @@ import styled from "styled-components"
 import logo from '../assets/logo.svg'
 import cart from '../assets/icon-cart.svg'
 import avatar from '../assets/image-avatar.png'
+import './Navbar.css'
 
 const Navbar = () => {
 
@@ -64,7 +65,7 @@ const Navbar = () => {
                 </Links>
                 <Links to="/collection">Collection</Links>
                 <Links to="/menu">Men</Links>
-                <Links to="/women">Women</Links>
+                <Links to="/women" id="women_section">Women</Links>
                 <Links to="/about">About</Links>
                 <Links to="/contact">Contact</Links>
             </LinksContainer>
