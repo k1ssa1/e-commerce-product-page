@@ -11,6 +11,8 @@ const ProductDetails = () => {
         flex-direction: column;
         align-items: flex-start;
         padding: 20px;
+        overflow: hidden;
+        transform: translateY(-20px)
     `;
 
     const CardHeader = styled.div`
