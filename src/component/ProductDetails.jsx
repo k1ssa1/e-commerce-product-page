@@ -43,7 +43,7 @@ const ProductDetails = () => {
     const ProductDescriptipn = styled.p`
         color: hsla(229.56521739130434, 10.697674418604652%, 42.15686274509804%, 0.616);
         font-size: 0.75rem;
-        width: 80%;
+        width: 90%;
         line-height: 20px;
         font-weight: 400;
     `;
@@ -97,7 +97,6 @@ const ProductDetails = () => {
         gap: 60%;
         grid-template-columns: auto auto auto;
         align-items: center;
-        justify-content: space-between;
     `;
 
      const Countplus = styled.button`
