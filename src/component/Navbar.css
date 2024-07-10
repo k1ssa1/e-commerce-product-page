@@ -1,3 +1,15 @@
 #women_section.active{
-    border-bottom: 1px solid hsl(26, 100%, 55%);
+    color: hsl(220, 13%, 13%);
+    position: relative;
+    top: 1px;
+    font-weight: 500
+}
+
+#women_section.active::after{
+    content: "";
+    display: block;
+    background-color: hsl(26, 100%, 55%);
+    height: 3px;
+    width: 100%;
+    transform: translateY(39px);
 }

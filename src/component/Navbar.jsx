@@ -14,7 +14,14 @@ const Navbar = () => {
         gap: 0 20px;
         padding: 0;
         margin: 0 80px 20px;
-        border-bottom: 2px solid whitesmoke;
+        &::after{
+            content: "";
+            display: block;
+            height: 1px;
+            background-color: #ccccccb9;
+            transform: translateX(70px);
+            width: 1010px;
+        }
     `;
 
     const LinksContainer = styled.div`
