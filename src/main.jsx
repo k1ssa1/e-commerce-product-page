@@ -32,7 +32,11 @@ const Layout = () => {
   const [notif, setNotif] = useState(null)
 
   const setCart = () => {
-    setNotif(<NotifTxt>{count}</NotifTxt>)
+    if(count > 0){
+     setNotif(<NotifTxt>{count}</NotifTxt>) 
+    }else{
+      setNotif(null)
+    }
   }
 
 
