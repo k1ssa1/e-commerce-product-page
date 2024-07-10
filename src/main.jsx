@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 import WomenView from './views/WomenView.jsx'
 import Navbar from './component/Navbar.jsx'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styled from "styled-components"
 
 const CartContainer = styled.div`
@@ -59,7 +59,7 @@ const NotifTxt = styled.p`
 
 const Layout = () => {
 
-  const [count, setCount] = useState(1)
+  const [count, setCount] = useState(0)
   const [notif, setNotif] = useState(null)
   const [cartContainer, setCartContainer] = useState(null)
 
@@ -81,18 +81,32 @@ const Layout = () => {
     }
   }
 
+  const createDefaultContent = () => {
+    return(
+      <CartBody>
+        <CartBodyTxt>Your cart is empty</CartBodyTxt>
+      </CartBody>
+    )
+  }
+
   const createCartContainer = () => {
     return(
       <CartContainer>
         <CartHeader>
           <CartTitle>Cart</CartTitle>
         </CartHeader>
-      <CartBody>
-        <CartBodyTxt>Your cart is empty</CartBodyTxt>
-      </CartBody>
+      {content}
     </CartContainer>
     )
   }
+
+  const [content, setContent] = useState(createDefaultContent())
+
+useEffect(() => {
+  if(count > 0){
+    setContent("New content")
+  }
+}, [count])
 
   const displayCartContainer = () => {
     setCartContainer(createCartContainer());
@@ -101,7 +115,7 @@ const Layout = () => {
 
   return (
     <div>
-      <Navbar notif={notif} displayCartContainer={displayCartContainer} cartContainer={cartContainer} />
+      <Navbar notif={notif} displayCartContainer={displayCartContainer} cartContainer={cartContainer} createDefaultContent={createDefaultContent} />
       <Outlet context={{ count, setCount, increaseCount, decreaseCount, setCart }} />
     </div>
   )

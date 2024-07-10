@@ -68,7 +68,7 @@ import './Navbar.css'
         font-size: 0.85rem;
     `;
 
-const Navbar = ({ notif, displayCartContainer, cartContainer }) => {
+const Navbar = ({ notif, displayCartContainer, cartContainer , createDefaultContent }) => {
 
     return (
         <NavbarContainer>
