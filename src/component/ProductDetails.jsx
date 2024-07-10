@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import plus from '../assets/icon-plus.svg'
 import minus from '../assets/icon-minus.svg'
 import cart from '../assets/icon-cart.svg'
+import { useState } from 'react'
 
 const ProductDetails = () => {
 
@@ -12,7 +13,7 @@ const ProductDetails = () => {
         align-items: flex-start;
         padding: 20px;
         overflow: hidden;
-        transform: translateY(-20px)
+        transform: translateY(-20px);
     `;
 
     const CardHeader = styled.div`
@@ -152,6 +153,17 @@ const ProductDetails = () => {
         font-size: 11px;
     `;
 
+    const [count, setCount] = useState(1)
+
+    const decreaseCount = () => {
+        if(count > 0){
+            setCount(count - 1)
+        }else{
+            setCount(0)
+        }
+    }
+    const increaseCount = () => setCount(count + 1)
+
     return (  
        <DetailsMainContainer>
             <CardHeader>
@@ -166,11 +178,11 @@ const ProductDetails = () => {
             </PriceDetails>
             <ProductSelector>
                 <ItemCounter>
-                    <Countminus>
+                    <Countminus onClick={decreaseCount}>
                         <img src={minus} alt="minus-icon"/>
                     </Countminus>
-                    <CountNumber>1</CountNumber>
-                    <Countplus>
+                    <CountNumber>{count}</CountNumber>
+                    <Countplus onClick={increaseCount}>
                         <img src={plus} alt="plus-icon"/>
                     </Countplus>
                 </ItemCounter>
