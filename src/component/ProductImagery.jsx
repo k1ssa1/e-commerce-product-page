@@ -34,7 +34,7 @@ const ProductImagery = () => {
         border-radius: 12px;
     `;
 
-    const [productImage, setProductImage] = useState(<ThumbnailImage src={mainImage} alt="thumbnail"/>);
+    const [productImage, setProductImage] = useState(<ThumbnailImage src={mainImage} alt="thumbnail" />);
 
     const ImageryList = styled.ul`
         display: flex;
@@ -62,42 +62,42 @@ const ProductImagery = () => {
     `;
 
     const resetImage = () => {
-        setProductImage(<ThumbnailImage src={mainImage} alt="thumbnail"/>)
+        setProductImage(<ThumbnailImage src={mainImage} alt="thumbnail" />)
     }
 
     const switchSecond = () => {
-        setProductImage(<ThumbnailImage src={product2_main} alt="thumbnail"/>)
+        setProductImage(<ThumbnailImage src={product2_main} alt="thumbnail" />)
     }
 
     const switchThird = () => {
-        setProductImage(<ThumbnailImage src={product3_main} alt="thumbnail"/>)
+        setProductImage(<ThumbnailImage src={product3_main} alt="thumbnail" />)
     }
 
     const switchForth = () => {
-        setProductImage(<ThumbnailImage src={product4_main} alt="thumbnail"/>)
+        setProductImage(<ThumbnailImage src={product4_main} alt="thumbnail" />)
     }
 
-    return (  
+    return (
         <ImageryContainer>
             <ThumbnailContainer>
                 {productImage}
             </ThumbnailContainer>
             <ImageryList>
                 <ImageryItem>
-                    <ProductImage src={product1_thumbnail} alt="thumbnail-product1-image" onClick={resetImage}/>
+                    <ProductImage src={product1_thumbnail} alt="thumbnail-product1-image" onClick={resetImage} />
                 </ImageryItem>
                 <ImageryItem>
-                    <ProductImage src={product2_thumbnail} alt="thumbnail-product2-image" onClick={switchSecond}/>
+                    <ProductImage src={product2_thumbnail} alt="thumbnail-product2-image" onClick={switchSecond} />
                 </ImageryItem>
                 <ImageryItem>
-                    <ProductImage src={product3_thumbnail} alt="thumbnail-product3-image" onClick={switchThird}/>
+                    <ProductImage src={product3_thumbnail} alt="thumbnail-product3-image" onClick={switchThird} />
                 </ImageryItem>
                 <ImageryItem>
-                    <ProductImage src={product4_thumbnail} alt="thumbnail-produc4-image" onClick={switchForth}/>
+                    <ProductImage src={product4_thumbnail} alt="thumbnail-produc4-image" onClick={switchForth} />
                 </ImageryItem>
             </ImageryList>
         </ImageryContainer>
     );
 }
- 
+
 export default ProductImagery;

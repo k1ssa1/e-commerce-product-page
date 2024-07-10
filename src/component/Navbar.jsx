@@ -5,7 +5,7 @@ import cart from '../assets/icon-cart.svg'
 import avatar from '../assets/image-avatar.png'
 import './Navbar.css'
 
-const Navbar = ({notif}) => {
+const Navbar = ({ notif }) => {
 
     const NavbarContainer = styled.nav`
         display: grid;
@@ -64,11 +64,11 @@ const Navbar = ({notif}) => {
         font-size: 0.85rem;
     `;
 
-    return ( 
+    return (
         <NavbarContainer>
             <LinksContainer>
                 <Links to="/">
-                    <img src={logo} alt="logo"/>
+                    <img src={logo} alt="logo" />
                 </Links>
                 <Links to="/collection">Collection</Links>
                 <Links to="/menu">Men</Links>
@@ -78,15 +78,15 @@ const Navbar = ({notif}) => {
             </LinksContainer>
             <CartList>
                 <CartListItem>
-                    <CartImage src={cart}/>
+                    <CartImage src={cart} />
                     {notif}
                 </CartListItem>
                 <CartListItem>
-                    <AvatarImage src={avatar}/>
+                    <AvatarImage src={avatar} />
                 </CartListItem>
             </CartList>
         </NavbarContainer>
-     );
+    );
 }
- 
+
 export default Navbar;

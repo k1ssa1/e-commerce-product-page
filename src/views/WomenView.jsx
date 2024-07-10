@@ -12,12 +12,12 @@ const WomenView = () => {
         margin: 70px 200px 0;
     `
 
-    return ( 
+    return (
         <ProductContainer>
-            <ProductImagery/>
-            <ProductDetails/>
+            <ProductImagery />
+            <ProductDetails />
         </ProductContainer>
-     );
+    );
 }
- 
+
 export default WomenView;
