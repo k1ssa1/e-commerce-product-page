@@ -9,19 +9,22 @@ import Navbar from './component/Navbar.jsx'
 import { useState, useEffect } from 'react'
 import styled from "styled-components"
 
+import thumb from "./assets/image-product-1-thumbnail.jpg"
+import del from "./assets/icon-delete.svg"
+
 const CartContainer = styled.div`
   position: absolute;
   top: 78px;
   right: 100px;
-  width: 350px;
+  width: 300px;
   display: flex;
   flex-direction: column;
-  padding: 2px;
+  padding: 2px 0 20px;
   z-index: 10;
   background-color: white;
   border: 1px solid hsl(230.00000000000003, 60.00000000000011%, 98.03921568627452%);
   box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.35);
-  height: 200px;
+  height: fit-content;
 `
 const CartHeader = styled.div`
   padding: 2px 10px;
@@ -57,11 +60,63 @@ const NotifTxt = styled.p`
         right: 262px;
     `;
 
+  const CartBodyContentSection = styled.div`
+    margin: 10px 0 2px;
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+  `
+
+  const CartBodyDetails = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 18px 15px;
+    height: 60%;
+  `
+
+  const CartBodyImage = styled.img`
+    border-radius: 5px;
+    height: 45px;
+    width: 45px;
+  `
+
+  const CartBodyDetailTxt = styled.p`
+    color: #b4b4b4;
+    font-size: 0.8rem;
+    margin: 0 15px;
+    line-height: 22px;
+    font-weight: 600;
+  `
+
+  const NewPrice = styled.span`
+    color: #111111;
+    font-weight: 700;
+  `
+  const CartBodyDel = styled.img`
+    height: 15px;
+    width: 15px;
+  `
+
+  const CartBodyBtn = styled.button`
+    width: 90%;
+    margin: 0 auto;
+    height: 40px;
+    background-color: hsl(26, 100%, 55%); 
+    border: 1px solid hsl(26, 100%, 55%);
+    border-radius: 8px;
+    color: black;
+    font-weight: 700;
+  `
+
 const Layout = () => {
 
   const [count, setCount] = useState(0)
   const [notif, setNotif] = useState(null)
   const [cartContainer, setCartContainer] = useState(null)
+
+  const price = "120.00"
 
   const decreaseCount = () => {
     if (count > 0) {
@@ -81,11 +136,26 @@ const Layout = () => {
     }
   }
 
+  
+
   const createDefaultContent = () => {
     return(
       <CartBody>
         <CartBodyTxt>Your cart is empty</CartBodyTxt>
       </CartBody>
+    )
+  }
+
+  const createCartContent = () => {
+    return(
+      <CartBodyContentSection>
+        <CartBodyDetails>
+          <CartBodyImage src={thumb} alt="product-thumbnail"/>
+          <CartBodyDetailTxt>Fall Limited Edition Sneakers ${price} x {count} <NewPrice> ${Number(price) * count}</NewPrice></CartBodyDetailTxt>
+          <CartBodyDel src={del} alt="del-icon" onClick={clearCart}/>
+        </CartBodyDetails>
+        <CartBodyBtn>Checkout</CartBodyBtn>
+      </CartBodyContentSection>
     )
   }
 
@@ -101,22 +171,24 @@ const Layout = () => {
   }
 
   const [content, setContent] = useState(createDefaultContent())
+  
 
-useEffect(() => {
-  if(count > 0){
-    setContent("New content")
-  }
-}, [count])
+  useEffect(() => {
+    if(count > 0){
+      setContent(createCartContent)
+    }
+  }, [count])
 
   const displayCartContainer = () => {
     setCartContainer(createCartContainer());
+    setNotif(null)
     console.log('displayCartContainer called'); 
   }
 
   return (
     <div>
-      <Navbar notif={notif} displayCartContainer={displayCartContainer} cartContainer={cartContainer} createDefaultContent={createDefaultContent} />
-      <Outlet context={{ count, setCount, increaseCount, decreaseCount, setCart }} />
+      <Navbar notif={notif} displayCartContainer={displayCartContainer} cartContainer={cartContainer} createDefaultContent={createDefaultContent} price={price} />
+      <Outlet context={{ count, setCount, increaseCount, decreaseCount, setCart, price }} />
     </div>
   )
 }

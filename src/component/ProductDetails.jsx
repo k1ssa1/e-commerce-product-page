@@ -8,7 +8,7 @@ import { useOutletContext } from 'react-router'
 
 const ProductDetails = () => {
 
-    const { count, increaseCount, decreaseCount, setCart } = useOutletContext();
+    const { count, increaseCount, decreaseCount, setCart, price } = useOutletContext();
 
     const DetailsMainContainer = styled.div`
         display: flex;
@@ -165,7 +165,7 @@ const ProductDetails = () => {
                 <ProductDescriptipn>These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.</ProductDescriptipn>
             </CardHeader>
             <PriceDetails>
-                <ProductPrice>$125.00</ProductPrice>
+                <ProductPrice>${price}</ProductPrice>
                 <ProductDiscount>50%</ProductDiscount>
                 <ProductInitialPrice>$250.00</ProductInitialPrice>
             </PriceDetails>
