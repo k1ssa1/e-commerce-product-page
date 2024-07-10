@@ -104,7 +104,7 @@ const ProductDetails = () => {
         align-items: center;
     `;
 
-     const Countplus = styled.button`
+    const Countplus = styled.button`
         padding: 2px 5px;
         display: flex;
         align-items: center;
@@ -158,8 +158,8 @@ const ProductDetails = () => {
     `;
 
 
-    return (  
-       <DetailsMainContainer>
+    return (
+        <DetailsMainContainer>
             <CardHeader>
                 <ProductCompany>sneaker company</ProductCompany>
                 <ProductTitle>Fall Limited Edition Sneakers</ProductTitle>
@@ -173,20 +173,20 @@ const ProductDetails = () => {
             <ProductSelector>
                 <ItemCounter>
                     <Countminus onClick={decreaseCount}>
-                        <img src={minus} alt="minus-icon"/>
+                        <img src={minus} alt="minus-icon" />
                     </Countminus>
                     <CountNumber>{count}</CountNumber>
                     <Countplus onClick={increaseCount}>
-                        <img src={plus} alt="plus-icon"/>
+                        <img src={plus} alt="plus-icon" />
                     </Countplus>
                 </ItemCounter>
                 <AddToCartBtn>
-                    <CartIcon src={cart} alt="cart-icon"/>
+                    <CartIcon src={cart} alt="cart-icon" />
                     <CartBtnTxt onClick={setCart}>Add to cart</CartBtnTxt>
                 </AddToCartBtn>
             </ProductSelector>
-       </DetailsMainContainer>
+        </DetailsMainContainer>
     );
 }
- 
+
 export default ProductDetails;
