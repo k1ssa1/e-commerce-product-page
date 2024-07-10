@@ -5,7 +5,7 @@ import cart from '../assets/icon-cart.svg'
 import avatar from '../assets/image-avatar.png'
 import './Navbar.css'
 
-const Navbar = () => {
+const Navbar = ({notif}) => {
 
     const NavbarContainer = styled.nav`
         display: grid;
@@ -79,6 +79,7 @@ const Navbar = () => {
             <CartList>
                 <CartListItem>
                     <CartImage src={cart}/>
+                    {notif}
                 </CartListItem>
                 <CartListItem>
                     <AvatarImage src={avatar}/>

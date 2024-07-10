@@ -5,7 +5,11 @@ import minus from '../assets/icon-minus.svg'
 import cart from '../assets/icon-cart.svg'
 import { useState } from 'react'
 
+import { useOutletContext } from 'react-router'
+
 const ProductDetails = () => {
+
+    const { count, increaseCount, decreaseCount, setCart } = useOutletContext();
 
     const DetailsMainContainer = styled.div`
         display: flex;
@@ -153,16 +157,6 @@ const ProductDetails = () => {
         font-size: 11px;
     `;
 
-    const [count, setCount] = useState(1)
-
-    const decreaseCount = () => {
-        if(count > 0){
-            setCount(count - 1)
-        }else{
-            setCount(0)
-        }
-    }
-    const increaseCount = () => setCount(count + 1)
 
     return (  
        <DetailsMainContainer>
@@ -188,7 +182,7 @@ const ProductDetails = () => {
                 </ItemCounter>
                 <AddToCartBtn>
                     <CartIcon src={cart} alt="cart-icon"/>
-                    <CartBtnTxt>Add to cart</CartBtnTxt>
+                    <CartBtnTxt onClick={setCart}>Add to cart</CartBtnTxt>
                 </AddToCartBtn>
             </ProductSelector>
        </DetailsMainContainer>
