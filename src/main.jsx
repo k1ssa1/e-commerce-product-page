@@ -180,8 +180,12 @@ const Layout = () => {
   }, [count])
 
   const displayCartContainer = () => {
-    setCartContainer(createCartContainer());
-    setNotif(null)
+    if(!cartContainer){
+      setCartContainer(createCartContainer());
+      setNotif(null)
+    }else{
+      setCartContainer(null)
+    }
     console.log('displayCartContainer called'); 
   }
 
