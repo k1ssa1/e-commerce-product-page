@@ -11,8 +11,13 @@ import styled from "styled-components"
 
 const NotifTxt = styled.p`
         background-color: hsl(26, 100%, 55%);
-        padding: 2px;
-        font-size: 0.5rem;
+        padding: 1px 8px;
+        font-size: 0.6rem;
+        color: #f5f5f5;
+        border-radius: 8px;
+        position: absolute;
+        top: 29px;
+        right: 284px
     `;
 
 const Layout = () => {

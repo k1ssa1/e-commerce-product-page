@@ -44,11 +44,17 @@ const Navbar = ({ notif }) => {
 
     const CartListItem = styled.li`
         margin: 0 20px;
+        display: flex;
+        flex-direction: column;
+        :hover{
+            cursor: pointer
+        }
     `;
 
     const CartImage = styled.img`
-        height: 30px;
-        width: 30px;
+        height: 24px;
+        width: 24px;
+        filter: brightness(0%);
     `;
 
     const AvatarImage = styled.img`

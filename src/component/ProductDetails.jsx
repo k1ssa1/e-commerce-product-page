@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import plus from '../assets/icon-plus.svg'
 import minus from '../assets/icon-minus.svg'
 import cart from '../assets/icon-cart.svg'
-import { useState } from 'react'
 
 import { useOutletContext } from 'react-router'
 
