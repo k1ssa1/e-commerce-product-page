@@ -9,6 +9,43 @@ import Navbar from './component/Navbar.jsx'
 import { useState } from 'react'
 import styled from "styled-components"
 
+const CartContainer = styled.div`
+  position: absolute;
+  top: 78px;
+  right: 100px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  padding: 2px;
+  z-index: 10;
+  background-color: white;
+  border: 1px solid hsl(230.00000000000003, 60.00000000000011%, 98.03921568627452%);
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.35);
+  height: 200px;
+`
+const CartHeader = styled.div`
+  padding: 2px 10px;
+  border-bottom: 1px solid hsl(240, 5.882352941176448%, 90%);
+`
+const CartTitle = styled.h4`
+  font-weight: 700;
+  color: #000000c8;
+  font-size: 0.8rem;
+`
+const CartBody = styled.div`
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+`
+const CartBodyTxt = styled.h4`
+  font-weight: 600;
+  color: hsl(217.49999999999997, 5.797101449275362%, 27.058823529411764%);
+  font-size: 0.95rem;
+`
+
 const NotifTxt = styled.p`
         background-color: hsl(26, 100%, 55%);
         padding: 1px 8px;
@@ -16,13 +53,15 @@ const NotifTxt = styled.p`
         color: #f5f5f5;
         border-radius: 8px;
         position: absolute;
-        top: 29px;
-        right: 284px
+        top: 20px;
+        right: 262px;
     `;
 
 const Layout = () => {
 
   const [count, setCount] = useState(1)
+  const [notif, setNotif] = useState(null)
+  const [cartContainer, setCartContainer] = useState(null)
 
   const decreaseCount = () => {
     if (count > 0) {
@@ -34,8 +73,6 @@ const Layout = () => {
 
   const increaseCount = () => setCount(count + 1)
 
-  const [notif, setNotif] = useState(null)
-
   const setCart = () => {
     if(count > 0){
      setNotif(<NotifTxt>{count}</NotifTxt>) 
@@ -44,10 +81,27 @@ const Layout = () => {
     }
   }
 
+  const createCartContainer = () => {
+    return(
+      <CartContainer>
+        <CartHeader>
+          <CartTitle>Cart</CartTitle>
+        </CartHeader>
+      <CartBody>
+        <CartBodyTxt>Your cart is empty</CartBodyTxt>
+      </CartBody>
+    </CartContainer>
+    )
+  }
+
+  const displayCartContainer = () => {
+    setCartContainer(createCartContainer());
+    console.log('displayCartContainer called'); 
+  }
 
   return (
     <div>
-      <Navbar notif={notif} />
+      <Navbar notif={notif} displayCartContainer={displayCartContainer} cartContainer={cartContainer} />
       <Outlet context={{ count, setCount, increaseCount, decreaseCount, setCart }} />
     </div>
   )

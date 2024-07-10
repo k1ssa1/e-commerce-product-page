@@ -5,9 +5,7 @@ import cart from '../assets/icon-cart.svg'
 import avatar from '../assets/image-avatar.png'
 import './Navbar.css'
 
-const Navbar = ({ notif }) => {
-
-    const NavbarContainer = styled.nav`
+ const NavbarContainer = styled.nav`
         display: grid;
         grid-template-columns: 60% 30%;
         align-items: center;
@@ -19,7 +17,7 @@ const Navbar = ({ notif }) => {
             display: block;
             height: 1px;
             background-color: #ccccccb9;
-            transform: translateX(70px);
+            transform: translateY(10px) translateX(64px);
             width: 1010px;
         }
     `;
@@ -58,8 +56,8 @@ const Navbar = ({ notif }) => {
     `;
 
     const AvatarImage = styled.img`
-        height: 60px;
-        width: 60px;
+        height: 40px;
+        width: 40px;
         border: 2px solid hsl(26, 100%, 55%);
         border-radius: 50%;
     `;
@@ -69,6 +67,8 @@ const Navbar = ({ notif }) => {
         color: gray;
         font-size: 0.85rem;
     `;
+
+const Navbar = ({ notif, displayCartContainer, cartContainer }) => {
 
     return (
         <NavbarContainer>
@@ -83,13 +83,14 @@ const Navbar = ({ notif }) => {
                 <Links to="/contact">Contact</Links>
             </LinksContainer>
             <CartList>
-                <CartListItem>
+                <CartListItem onClick={displayCartContainer}>
                     <CartImage src={cart} />
                     {notif}
                 </CartListItem>
                 <CartListItem>
                     <AvatarImage src={avatar} />
                 </CartListItem>
+                {cartContainer}
             </CartList>
         </NavbarContainer>
     );
