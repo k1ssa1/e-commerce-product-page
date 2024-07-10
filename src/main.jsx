@@ -152,7 +152,7 @@ const Layout = () => {
         <CartBodyDetails>
           <CartBodyImage src={thumb} alt="product-thumbnail"/>
           <CartBodyDetailTxt>Fall Limited Edition Sneakers ${price} x {count} <NewPrice> ${Number(price) * count}</NewPrice></CartBodyDetailTxt>
-          <CartBodyDel src={del} alt="del-icon" onClick={clearCart}/>
+          <CartBodyDel src={del} alt="del-icon"/>
         </CartBodyDetails>
         <CartBodyBtn>Checkout</CartBodyBtn>
       </CartBodyContentSection>
