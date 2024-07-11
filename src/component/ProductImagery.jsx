@@ -27,6 +27,9 @@ const ImageryContainer = styled.aside`
         display: flex;
         height: 350px;
         width: 100%;
+        :hover{
+            cursor: pointer;
+        }
     `;
 
     const ThumbnailImage = styled.img`
