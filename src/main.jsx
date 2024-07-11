@@ -112,9 +112,18 @@ const NotifTxt = styled.p`
 
 const Layout = () => {
 
+  const createDefaultContent = () => {
+    return(
+      <CartBody>
+        <CartBodyTxt>Your cart is empty</CartBodyTxt>
+      </CartBody>
+    )
+  }
+
   const [count, setCount] = useState(0)
   const [notif, setNotif] = useState(null)
   const [cartContainer, setCartContainer] = useState(null)
+  const [content, setContent] = useState(createDefaultContent)
 
   const price = "120.00"
 
@@ -128,23 +137,6 @@ const Layout = () => {
 
   const increaseCount = () => setCount(count + 1)
 
-  const setCart = () => {
-    if(count > 0){
-     setNotif(<NotifTxt>{count}</NotifTxt>) 
-    }else{
-      setNotif(null)
-    }
-  }
-
-  
-
-  const createDefaultContent = () => {
-    return(
-      <CartBody>
-        <CartBodyTxt>Your cart is empty</CartBodyTxt>
-      </CartBody>
-    )
-  }
 
   const createCartContent = () => {
     return(
@@ -152,7 +144,7 @@ const Layout = () => {
         <CartBodyDetails>
           <CartBodyImage src={thumb} alt="product-thumbnail"/>
           <CartBodyDetailTxt>Fall Limited Edition Sneakers ${price} x {count} <NewPrice> ${Number(price) * count}</NewPrice></CartBodyDetailTxt>
-          <CartBodyDel src={del} alt="del-icon"/>
+          <CartBodyDel src={del} alt="del-icon" onClick={clearCart}/>
         </CartBodyDetails>
         <CartBodyBtn>Checkout</CartBodyBtn>
       </CartBodyContentSection>
@@ -170,18 +162,9 @@ const Layout = () => {
     )
   }
 
-  const [content, setContent] = useState(createDefaultContent())
-  
-
-  useEffect(() => {
-    if(count > 0){
-      setContent(createCartContent)
-    }
-  }, [count])
-
   const displayCartContainer = () => {
     if(!cartContainer){
-      setCartContainer(createCartContainer());
+      setCartContainer(createCartContainer);
       setNotif(null)
     }else{
       setCartContainer(null)
@@ -189,10 +172,29 @@ const Layout = () => {
     console.log('displayCartContainer called'); 
   }
 
+  const clearCart = () => {
+    if (content) {
+      if (count > 0) {
+        setContent(createDefaultContent())
+      }
+    }
+  };
+
+  const useSetCart = () => {
+      if(count > 0 && content){
+      setNotif(<NotifTxt>{count}</NotifTxt>) 
+      setContent(createCartContent())
+      }if(count <= 0 && !content) {
+        setContent(createDefaultContent());
+        setNotif(null)
+      }
+  }
+
+
   return (
     <div>
       <Navbar notif={notif} displayCartContainer={displayCartContainer} cartContainer={cartContainer} createDefaultContent={createDefaultContent} price={price} />
-      <Outlet context={{ count, setCount, increaseCount, decreaseCount, setCart, price }} />
+      <Outlet context={{ count, setCount, increaseCount, decreaseCount, useSetCart, price }} />
     </div>
   )
 }

@@ -8,7 +8,7 @@ import { useOutletContext } from 'react-router'
 
 const ProductDetails = () => {
 
-    const { count, increaseCount, decreaseCount, setCart, price } = useOutletContext();
+    const { count, increaseCount, decreaseCount, useSetCart, price } = useOutletContext();
 
     const DetailsMainContainer = styled.div`
         display: flex;
@@ -181,7 +181,7 @@ const ProductDetails = () => {
                 </ItemCounter>
                 <AddToCartBtn>
                     <CartIcon src={cart} alt="cart-icon" />
-                    <CartBtnTxt onClick={setCart}>Add to cart</CartBtnTxt>
+                    <CartBtnTxt onClick={useSetCart}>Add to cart</CartBtnTxt>
                 </AddToCartBtn>
             </ProductSelector>
         </DetailsMainContainer>
