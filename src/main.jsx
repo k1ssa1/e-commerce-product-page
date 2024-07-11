@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 import WomenView from './views/WomenView.jsx'
 import Navbar from './component/Navbar.jsx'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import styled from "styled-components"
 
 import thumb from "./assets/image-product-1-thumbnail.jpg"

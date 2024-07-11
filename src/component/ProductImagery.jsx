@@ -11,10 +11,10 @@ import product4_main from '../assets/image-product-4.jpg'
 
 
 import { useState } from "react"
+import { createPortal } from "react-dom"
+import LighthouseComponent from "./Lighthouse"
 
-const ProductImagery = () => {
-
-    const ImageryContainer = styled.aside`
+const ImageryContainer = styled.aside`
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -34,9 +34,7 @@ const ProductImagery = () => {
         border-radius: 12px;
     `;
 
-    const [productImage, setProductImage] = useState(<ThumbnailImage src={mainImage} alt="thumbnail" />);
-
-    const ImageryList = styled.ul`
+     const ImageryList = styled.ul`
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -61,6 +59,11 @@ const ProductImagery = () => {
         width: 100%;
     `;
 
+const ProductImagery = () => {
+
+    const [productImage, setProductImage] = useState(<ThumbnailImage src={mainImage} alt="thumbnail"/>);
+    const [modal, setModal] = useState(false)
+
     const resetImage = () => {
         setProductImage(<ThumbnailImage src={mainImage} alt="thumbnail" />)
     }
@@ -77,9 +80,10 @@ const ProductImagery = () => {
         setProductImage(<ThumbnailImage src={product4_main} alt="thumbnail" />)
     }
 
+
     return (
         <ImageryContainer>
-            <ThumbnailContainer>
+            <ThumbnailContainer onClick={() => setModal(true)}>
                 {productImage}
             </ThumbnailContainer>
             <ImageryList>
@@ -96,6 +100,7 @@ const ProductImagery = () => {
                     <ProductImage src={product4_thumbnail} alt="thumbnail-produc4-image" onClick={switchForth} />
                 </ImageryItem>
             </ImageryList>
+            {modal && createPortal(<LighthouseComponent onClose = {() => setModal(false)}/>,document.body)}
         </ImageryContainer>
     );
 }
