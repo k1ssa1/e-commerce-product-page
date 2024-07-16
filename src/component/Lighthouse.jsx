@@ -14,6 +14,8 @@ import product4_main from '../assets/image-product-4.jpg'
 
 import close from "../assets/icon-close.svg"
 
+import { GrNext, GrPrevious } from "react-icons/gr";
+
 const LighthouseContainer = styled.div`
     position: fixed;
     top: 0;
@@ -38,6 +40,33 @@ const LighthouseImageryDisplayer = styled.div`
     width: fit-content;
     overflow: hidden;
 `
+
+const IconWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 50%;
+  color: #282f42;
+  height: 10px;
+  width: 10px;
+  position: fixed;
+  top: 40%;
+  padding: 20px;
+  border: 1px solid #f5f5f5;
+
+  :hover{
+    cursor: pointer;
+  }
+`;
+
+const PreviousIcon = styled(IconWrapper)`
+  right: 835px;
+`;
+
+const NextIcon = styled(IconWrapper)`
+  right: 455px;
+`;
 
 const LighthouseImageryThumbnail = styled.div`
         display: flex;
@@ -106,9 +135,15 @@ const Lighthouse = ({onClose}) => {
         <LighthouseContainer>
             <LighthouseBtn src={close} onClick={onClose}/>
             <LighthouseImageryDisplayer>
+                <PreviousIcon>
+                    <GrPrevious />
+                </PreviousIcon>
                 <LighthouseImageryThumbnail>
                     {lproduct}
                 </LighthouseImageryThumbnail>
+                 <NextIcon>
+                    <GrNext />
+                </NextIcon>
                 <LighthouseImageryList>
                     <LighthouseImageryItem>
                         <LighthouseProductImage src={product1_thumbnail} alt="thumbnail-product1-image" onClick={resetImage} />
